@@ -1,0 +1,5 @@
+def firstPalindrome(words):
+    for word in words:
+        if word == word[::-1]:  # Check if the word is a palindrome
+            return word
+    return ""  # Return empty string if no palindrome is found
