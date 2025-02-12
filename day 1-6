@@ -1,0 +1,12 @@
+def process_list(nums):
+    # Sorting the list using an efficient sorting algorithm (Timsort in Python)
+    nums.sort()
+    
+    # The last element in the sorted list is the maximum
+    max_element = nums[-1] if nums else None  # Handle empty list case
+    
+    return max_element
+
+# Example usage:
+nums = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]
+print(process_list(nums))  # Output: 9
