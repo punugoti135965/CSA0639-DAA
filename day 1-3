@@ -1,0 +1,22 @@
+def sumOfSquares(nums):
+    n = len(nums)
+    result = 0
+    
+    # We will loop through each starting point of the subarrays
+    for i in range(n):
+        # Set to store distinct elements in the current subarray
+        seen = set()
+        
+        # Loop to consider all subarrays starting at i
+        for j in range(i, n):
+            seen.add(nums[j])  # Add current element to the set (distinct elements)
+            distinct_count = len(seen)  # Number of distinct elements in the current subarray
+            result += distinct_count ** 2  # Add the square of the distinct count to the result
+    
+    return result
+
+# Example usage:
+nums1 = [1, 2, 1]
+nums2 = [1, 1]
+print(sumOfSquares(nums1))  # Output: 15
+print(sumOfSquares(nums2))  # Output: 3
