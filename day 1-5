@@ -1,0 +1,13 @@
+def find_max(nums):
+    return max(nums)
+
+# Test cases
+test_cases = [
+    [1, 2, 3, 4, 5],  # Expected output: 5
+    [7, 7, 7, 7, 7],  # Expected output: 7
+    [-10, 2, 3, -4, 5]  # Expected output: 5
+]
+
+# Running the test cases
+for case in test_cases:
+    print(f"Input: {case} -> Output: {find_max(case)}")
