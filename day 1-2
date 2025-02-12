@@ -1,0 +1,8 @@
+def numSimilarElements(nums1, nums2):
+    set_nums2 = set(nums2)  # Convert nums2 to a set for quick lookup
+    set_nums1 = set(nums1)  # Convert nums1 to a set for quick lookup
+    
+    answer1 = sum(1 for x in nums1 if x in set_nums2)  # Count elements in nums1 that are in nums2
+    answer2 = sum(1 for x in nums2 if x in set_nums1)  # Count elements in nums2 that are in nums1
+    
+    return [answer1, answer2]
