@@ -1,0 +1,19 @@
+def largeGroupPositions(s: str):
+    result = []
+    n = len(s)
+    i = 0
+    
+    while i < n:
+        j = i
+        # Find the end of the current group of the same character
+        while j < n and s[j] == s[i]:
+            j += 1
+        
+        # Check if the group has 3 or more characters
+        if j - i >= 3:
+            result.append([i, j - 1])  # store the interval [start, end]
+        
+        # Move i to the end of the current group
+        i = j
+    
+    return result
