@@ -1,0 +1,16 @@
+def champagneTower(poured: int, query_row: int, query_glass: int) -> float:
+    # Create a 2D list (array) to represent the glasses
+    glasses = [[0] * (i + 1) for i in range(query_row + 1)]
+    
+    # Start by pouring the champagne into the top glass (0, 0)
+    glasses[0][0] = poured
+    
+    # Simulate the pouring and overflow process
+    for row in range(query_row):
+        for col in range(row + 1):
+            # Only process glasses that contain champagne
+            if glasses[row][col] > 1:
+                overflow = glasses[row][col] - 1  # Excess champagne to distribute
+                glasses[row][col] = 1  # The glass becomes full
+                
+                # Distribute the excess to the two glasses below (left an
