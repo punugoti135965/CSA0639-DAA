@@ -1,0 +1,32 @@
+def gameOfLife(board):
+    m, n = len(board), len(board[0])
+    
+    # Directions for all 8 possible neighbors
+    directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+    
+    def count_live_neighbors(i, j):
+        count = 0
+        for di, dj in directions:
+            ni, nj = i + di, j + dj
+            if 0 <= ni < m and 0 <= nj < n and (board[ni][nj] == 1 or board[ni][nj] == 2):
+                count += 1
+        return count
+    
+    # Iterate over each cell and update the next state (mark future state)
+    for i in range(m):
+        for j in range(n):
+            live_neighbors = count_live_neighbors(i, j)
+            
+            if board[i][j] == 1:  # If the cell is live
+                if live_neighbors < 2 or live_neighbors > 3:
+                    board[i][j] = 2  # Mark it as live but will die
+                else:
+                    board[i][j] = 3  # Mark it as live and will stay live
+            elif board[i][j] == 0:  # If the cell is dead
+                if live_neighbors == 3:
+                    board[i][j] = 1  # Mark it as dead but will become live
+    
+    # Update the board by converting future states to the final state
+    for i in range(m):
+        for j in range(n):
+            board[i][j] = board[i][j] % 2  # 1 if live, 0 if dead
