@@ -1,0 +1,16 @@
+return 1  # There's only one way to climb 1 step
+    
+    # Initialize the base cases
+    prev2, prev1 = 1, 1
+    
+    # Loop through to calculate the number of ways to reach step n
+    for i in range(2, n + 1):
+        current = prev1 + prev2  # Total ways to reach the current step
+        prev2 = prev1  # Update prev2 for the next iteration
+        prev1 = current  # Update prev1 for the next iteration
+    
+    # The answer is the number of ways to reach step n
+    return prev1
+# Examples:
+print(climbStairs(4))  # Output: 5
+print(climbStairs(3))  # Output: 3
