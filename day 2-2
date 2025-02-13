@@ -1,0 +1,25 @@
+def rob(nums):
+    # Edge case: If there's only one house, rob it.
+    if len(nums) == 1:
+        return nums[0]
+    
+    # Helper function to calculate the maximum amount you can rob in a linear arrangement of houses
+    def rob_linear(nums):
+        prev1, prev2 = 0, 0  # prev1 is for dp[i-1], prev2 is for dp[i-2]
+        for num in nums:
+            temp = prev1
+            prev1 = max(prev1, prev2 + num)  # Rob or don't rob the current house
+            prev2 = temp
+        return prev1
+    
+    # Case 1: Rob houses from index 1 to n-1 (exclude the first house)
+    case1 = rob_linear(nums[1:])
+    
+    # Case 2: Rob houses from index 0 to n-2 (exclude the last house)
+    case2 = rob_linear(nums[:-1])
+    
+    # Return the maximum of the two cases
+    return max(case1, case2)
+# Example:
+nums = [2, 3, 2]
+print(rob(nums))  # Output: 3 (Robbing house 1)
